@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StockFlow Manager</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="manager-theme">
+  <header class="app-header">
+    <div class="brand">StockFlow Manager</div>
+    <nav class="main-nav">
+      <a href="viewer.html">Viewer</a>
+      <a href="wallet.html">Wallet</a>
+      <a href="clipping.html">Clipping</a>
+      <a href="history.html">History</a>
+      <a href="samples.html">Samples</a>
+    </nav>
+  </header>
+
+  <main class="app-shell manager-shell">
+    <section class="page-panel">
+      <div class="section-heading">
+        <div>
+          <h1>Manager Overview</h1>
+          <p>High-level view of inventory, samples, transactions and activity.</p>
+        </div>
+        <div>
+          <button id="install-button" class="button button-primary hidden">Install App</button>
+        </div>
+      </div>
+
+      <div id="manager-grid" class="card-grid">
+        <div class="card stat-card" id="mgr-items-count"></div>
+        <div class="card stat-card" id="mgr-samples-count"></div>
+        <div class="card stat-card" id="mgr-wallet-balance"></div>
+        <div class="card stat-card" id="mgr-history-count"></div>
+      </div>
+
+      <section class="card inventory-card">
+        <div class="card-heading"><h2>Latest Inventory</h2></div>
+        <div class="table-wrap"><table class="data-table" id="mgr-items-table"><thead><tr><th>Name</th><th>Serial</th><th>Qty</th><th>Status</th></tr></thead><tbody></tbody></table></div>
+      </section>
+
+      <section class="card inventory-card">
+        <div class="card-heading"><h2>Recent Samples</h2></div>
+        <div class="table-wrap"><table class="data-table" id="mgr-samples-table"><thead><tr><th>Dir</th><th>Name</th><th>Width</th><th>Time</th></tr></thead><tbody></tbody></table></div>
+      </section>
+
+      <section class="card inventory-card">
+        <div class="card-heading"><h2>Recent Activity</h2></div>
+        <div class="table-wrap"><table class="data-table" id="mgr-history-table"><thead><tr><th>Date</th><th>Action</th><th>Details</th></tr></thead><tbody></tbody></table></div>
+      </section>
+
+      <section class="card inventory-card">
+        <div class="card-heading"><h2>Wallet Transactions</h2></div>
+        <div class="table-wrap"><table class="data-table" id="mgr-wallet-table"><thead><tr><th>Date</th><th>Description</th><th>Type</th><th>Amount</th></tr></thead><tbody></tbody></table></div>
+        <div style="margin-top:1rem;"><canvas id="mgr-wallet-chart" height="100"></canvas></div>
+      </section>
+
+    </section>
+  </main>
+
+  <script src="manager.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js').catch(()=>{});
+    }
+  </script>
+</body>
+</html>

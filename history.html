@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StockFlow History</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">StockFlow History</div>
+    <nav class="main-nav">
+      <a href="viewer.html">Viewer</a>
+      <a href="wallet.html">Wallet</a>
+      <a href="clipping.html">Clipping</a>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <section class="page-panel">
+      <div class="section-heading">
+        <div>
+          <h1>Action history</h1>
+          <p>Review recent inventory changes and workflow events in a central log.</p>
+        </div>
+      </div>
+
+      <section class="card inventory-card">
+        <div class="card-heading"><h2>History log</h2></div>
+        <div class="table-wrap">
+          <table class="data-table" id="history-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Event</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="history.js"></script>
+</body>
+</html>
