@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StockFlow Viewer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">StockFlow Viewer</div>
+    <nav class="main-nav">
+      <a href="wallet.html">Wallet</a>
+      <a href="clipping.html">Clipping</a>
+      <a href="history.html">History</a>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <section class="page-panel">
+      <div class="section-heading">
+        <div>
+          <h1>Inventory viewer</h1>
+          <p>Browse available stock, check serials and monitor low stock items.</p>
+        </div>
+      </div>
+
+      <div class="filters-row">
+        <div class="input-group">
+          <label for="viewer-search">Search</label>
+          <input id="viewer-search" type="search" placeholder="Search by name or serial" />
+        </div>
+        <div class="input-group">
+          <label for="viewer-category">Category</label>
+          <select id="viewer-category">
+            <option>All Items</option>
+            <option>Available</option>
+            <option>In Use</option>
+            <option>Installed</option>
+            <option>Reserved</option>
+            <option>Defective</option>
+            <option>Low Stock</option>
+          </select>
+        </div>
+      </div>
+
+      <section class="card inventory-card">
+        <div class="card-heading">
+          <h2>Inventory list</h2>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="viewer-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Serial</th>
+                <th>Quantity</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card chart-card">
+        <div class="card-heading"><h2>Inventory trends</h2></div>
+        <canvas id="viewer-chart" height="120"></canvas>
+      </section>
+    </section>
+  </main>
+
+  <script src="viewer.js"></script>
+</body>
+</html>

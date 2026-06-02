@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StockFlow Wallet</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">StockFlow Wallet</div>
+    <nav class="main-nav">
+      <a href="viewer.html">Viewer</a>
+      <a href="clipping.html">Clipping</a>
+      <a href="history.html">History</a>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <section class="page-panel">
+      <div class="section-heading">
+        <div>
+          <h1>Wallet transactions</h1>
+          <p>Track payments, purchases and wallet balance changes.</p>
+        </div>
+        <button id="wallet-add-button" class="button button-primary">Add transaction</button>
+      </div>
+
+      <div class="wallet-top-cards">
+        <div class="card stat-card">
+          <div class="stat-value" id="wallet-balance">$0</div>
+          <div class="stat-label">Balance</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-value" id="wallet-total-in">$0</div>
+          <div class="stat-label">Total In</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-value" id="wallet-total-out">$0</div>
+          <div class="stat-label">Total Out</div>
+        </div>
+      </div>
+
+      <section class="card inventory-card">
+        <div class="card-heading">
+          <h2>Transactions</h2>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="wallet-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card chart-card">
+        <div class="card-heading"><h2>Cash flow</h2></div>
+        <canvas id="wallet-chart" height="120"></canvas>
+      </section>
+    </section>
+  </main>
+
+  <div id="wallet-modal" class="modal hidden">
+    <div class="modal-panel">
+      <button id="wallet-modal-close" class="modal-close">✕</button>
+      <h2>Add wallet transaction</h2>
+      <form id="wallet-form">
+        <label for="wallet-description">Description</label>
+        <input id="wallet-description" name="description" type="text" required />
+        <label for="wallet-amount">Amount</label>
+        <input id="wallet-amount" name="amount" type="number" step="0.01" min="0" required />
+        <label for="wallet-type">Type</label>
+        <select id="wallet-type" name="type">
+          <option value="deposit">Deposit</option>
+          <option value="withdrawal">Withdrawal</option>
+        </select>
+        <p id="wallet-error" class="field-error hidden"></p>
+        <div class="modal-actions">
+          <button type="button" id="wallet-cancel" class="button button-secondary">Cancel</button>
+          <button type="submit" class="button button-primary">Save transaction</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="wallet.js"></script>
+</body>
+</html>

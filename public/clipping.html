@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StockFlow Clipping</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">StockFlow Clipping</div>
+    <nav class="main-nav">
+      <a href="viewer.html">Viewer</a>
+      <a href="wallet.html">Wallet</a>
+      <a href="history.html">History</a>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <section class="page-panel">
+      <div class="section-heading">
+        <div>
+          <h1>Clipping records</h1>
+          <p>Capture notes and service details for equipment transfers, repairs, or replacement orders.</p>
+        </div>
+        <button id="clipping-add-button" class="button button-primary">Add clipping</button>
+      </div>
+
+      <section class="card inventory-card">
+        <div class="card-heading"><h2>Clipping history</h2></div>
+        <div class="table-wrap">
+          <table class="data-table" id="clipping-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div id="clipping-modal" class="modal hidden">
+    <div class="modal-panel">
+      <button id="clipping-modal-close" class="modal-close">✕</button>
+      <h2>Add clipping record</h2>
+      <form id="clipping-form">
+        <label for="clipping-title">Title</label>
+        <input id="clipping-title" name="title" type="text" required />
+        <label for="clipping-category">Category</label>
+        <select id="clipping-category" name="category">
+          <option>Repair</option>
+          <option>Inspection</option>
+          <option>Transfer</option>
+          <option>Return</option>
+          <option>Other</option>
+        </select>
+        <label for="clipping-note">Note</label>
+        <textarea id="clipping-note" name="note" rows="4" required></textarea>
+        <p id="clipping-error" class="field-error hidden"></p>
+        <div class="modal-actions">
+          <button type="button" id="clipping-cancel" class="button button-secondary">Cancel</button>
+          <button type="submit" class="button button-primary">Save clipping</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="clipping.js"></script>
+</body>
+</html>

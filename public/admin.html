@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StockFlow Admin</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">StockFlow Admin</div>
+    <nav class="main-nav">
+      <a href="viewer.html">Viewer</a>
+      <a href="manager.html">Manager</a>
+      <a href="wallet.html">Wallet</a>
+      <a href="clipping.html">Clipping</a>
+      <a href="history.html">History</a>
+      <a href="samples.html">Samples</a>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <section id="login-screen" class="page-panel">
+      <div class="card login-card">
+        <h1>Admin sign in</h1>
+        <p>Enter the admin password to manage inventory and reports.</p>
+        <form id="login-form">
+          <label for="admin-password">Password</label>
+          <input id="admin-password" name="password" type="password" autocomplete="current-password" placeholder="Enter password" required />
+          <button type="submit" class="button button-primary">Sign in</button>
+          <p id="login-error" class="field-error hidden"></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="admin-app" class="page-panel hidden">
+      <div class="section-heading">
+        <div>
+          <h1>Inventory dashboard</h1>
+          <p>Manage items, statuses, low stock alerts and transaction history.</p>
+        </div>
+        <button id="logout-button" class="button button-secondary">Log out</button>
+      </div>
+
+      <div class="filters-row">
+        <div class="input-group">
+          <label for="search-input">Search</label>
+          <input id="search-input" type="search" placeholder="Search by item name or serial" />
+        </div>
+        <div class="input-group">
+          <label for="category-select">Category</label>
+          <select id="category-select">
+            <option>All Items</option>
+            <option>Available</option>
+            <option>In Use</option>
+            <option>Installed</option>
+            <option>Reserved</option>
+            <option>Defective</option>
+            <option>Low Stock</option>
+          </select>
+        </div>
+        <button id="new-item-button" class="button button-primary">Add item</button>
+        <button id="manage-sample-button" class="button">Manage samples</button>
+      </div>
+
+      <div id="stats-cards" class="card-grid"></div>
+
+      <section class="card inventory-card">
+        <div class="card-heading">
+          <h2>Inventory list</h2>
+          <div id="item-count" class="subtle-text"></div>
+        </div>
+        <div class="table-wrap">
+          <table id="items-table" class="data-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Serial</th>
+                <th>Quantity</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card chart-card">
+        <div class="card-heading"><h2>Status distribution</h2></div>
+        <canvas id="status-chart" height="120"></canvas>
+      </section>
+    </section>
+  </main>
+
+  <div id="item-modal" class="modal hidden">
+    <div class="modal-panel">
+      <button id="modal-close" class="modal-close">✕</button>
+      <h2 id="modal-title">Add inventory item</h2>
+      <form id="item-form">
+        <label for="item-name">Item Name</label>
+        <input id="item-name" name="name" type="text" required />
+        <label for="item-serial">Serial / Number</label>
+        <input id="item-serial" name="serial" type="text" required />
+        <label for="item-quantity">Quantity</label>
+        <input id="item-quantity" name="quantity" type="number" min="0" required />
+        <label for="item-status">Status</label>
+        <select id="item-status" name="status" required>
+          <option>Available</option>
+          <option>In Use</option>
+          <option>Installed</option>
+          <option>Reserved</option>
+          <option>Defective</option>
+        </select>
+        <input id="item-id" name="id" type="hidden" />
+        <p id="item-error" class="field-error hidden"></p>
+        <div class="modal-actions">
+          <button type="button" id="cancel-button" class="button button-secondary">Cancel</button>
+          <button type="submit" class="button button-primary">Save item</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

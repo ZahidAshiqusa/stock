@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samples</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">Samples</div>
+    <nav class="main-nav">
+      <a href="viewer.html">Viewer</a>
+      <a href="wallet.html">Wallet</a>
+      <a href="history.html">History</a>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <section class="page-panel">
+      <div class="section-heading">
+        <div>
+          <h1>Samples log</h1>
+          <p>View recorded sample in/out events with timestamps.</p>
+        </div>
+      </div>
+
+      <section class="card inventory-card">
+        <div class="card-heading">
+          <h2>Samples</h2>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="samples-table">
+            <thead>
+              <tr>
+                <th>Direction</th>
+                <th>Name</th>
+                <th>Width (guzz)</th>
+                <th>Timestamp</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="samples.js"></script>
+</body>
+</html>
